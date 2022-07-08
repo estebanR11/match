@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tile : MonoBehaviour {
+public enum TileType
+{
+	Normal,
+	Obstacle
+}
+
+public class Tile : MonoBehaviour
+{
 
 	public int xIndex;
 	public int yIndex;
 
 	Board m_board;
 
+	public TileType tileType = TileType.Normal;
+
 	// Use this for initialization
-	void Start () 
+	void Start()
 	{
-	
+
 	}
 
 	public void Init(int x, int y, Board board)
@@ -24,7 +33,7 @@ public class Tile : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (m_board !=null)
+		if (m_board != null)
 		{
 			m_board.ClickTile(this);
 		}
@@ -33,7 +42,7 @@ public class Tile : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
-		if (m_board !=null)
+		if (m_board != null)
 		{
 			m_board.DragToTile(this);
 		}
@@ -42,7 +51,7 @@ public class Tile : MonoBehaviour {
 
 	void OnMouseUp()
 	{
-		if (m_board !=null)
+		if (m_board != null)
 		{
 			m_board.ReleaseTile();
 		}
